@@ -16,6 +16,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public UserDaoJDBCImpl() {
     }
+
     @Override
     public void createUsersTable() {
         String sql = "CREATE TABLE IF NOT EXISTS user \n" +
@@ -25,8 +26,8 @@ public class UserDaoJDBCImpl implements UserDao {
                 "    last_name VARCHAR(20),\n" +
                 "    age TINYINT\n" +
                 ");";
-        try (Statement prep_statement = connection.createStatement()) {
-            prep_statement.executeUpdate(sql);
+        try (Statement prepStatement = connection.createStatement()) {
+            prepStatement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,8 +36,8 @@ public class UserDaoJDBCImpl implements UserDao {
     @Override
     public void dropUsersTable() {
         String sqlDrop = "DROP TABLE IF EXISTS user";
-        try (Statement pstatement = connection.createStatement()) {
-            pstatement.executeUpdate(sqlDrop);
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(sqlDrop);
         } catch (SQLException e) {
             e.printStackTrace();
         }
